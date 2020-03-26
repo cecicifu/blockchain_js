@@ -1,0 +1,18 @@
+console.log(`\nTest Case`)
+let index = 0;
+let loop = true
+while (loop) {
+    let date = new Date().getTime()
+    let nonce = Math.random()
+
+    if (firstHash && firstHash.length > 0) {
+        let hash = SHA256(`${index++}${firstHash}${date}data${nonce}`).toString()
+
+        if (hash.substr(0, 5) === ('0') * 5) {
+            loop = false
+        }
+
+        console.log(hash)
+    } else
+        var firstHash = SHA256(`${index}null${date}data0`).toString()
+}
